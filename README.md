@@ -4,8 +4,9 @@
 
 ## config
 
-可以在config 服务中写入其他服务的的配置 ，比如some.yml
+#### 1. 可以在config 服务中写入其他服务的的配置
 
+some.yml
 ```yaml
 my:
   message:  wo shi xueaohui
@@ -26,4 +27,17 @@ public class SomeApplication {
     }
 }
 
+```
+
+#### 2. 查看config 的内容
+
+通用配置
+> http://ip:configPort/appName/propName
+
+在咱们系统的
+
+> http://localhost:8888/some/my
+
+```json
+{"name":"some","profiles":["my"],"label":null,"version":null,"state":null,"propertySources":[{"name":"classpath:/config/some.yml","source":{"my.message":"wo shi xueaohui"}}]}
 ```
