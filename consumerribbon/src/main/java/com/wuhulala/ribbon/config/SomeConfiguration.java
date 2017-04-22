@@ -1,7 +1,7 @@
 package com.wuhulala.ribbon.config;
 
 import com.netflix.loadbalancer.IRule;
-import com.netflix.loadbalancer.RandomRule;
+import com.netflix.loadbalancer.RoundRobinRule;
 import com.wuhulala.ribbon.annotation.ExcludeFromComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +14,10 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ExcludeFromComponentScan
-public class PersonConfiguration {
+public class SomeConfiguration {
 
     @Bean
     public IRule ribbonRule(){
-        return new RandomRule();
+        return new RoundRobinRule();
     }
 }

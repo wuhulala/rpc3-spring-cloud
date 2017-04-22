@@ -61,3 +61,22 @@ public class SomeApplication {
         return new RestTemplate();
     }
 ```
+
+2. 为不同的客户端设置不同的策略
+```java
+//设置不同的服务不同的负载均衡效果
+//1. some服务 轮询策略
+//2. person服务 随机策略
+@RibbonClients({
+        @RibbonClient(name = "person", configuration = PersonConfiguration.class),
+        @RibbonClient(name = "some", configuration = SomeConfiguration.class)
+})
+```
+
+>tip:
+>1. 不能把这些配置类放入到springIOC容器能够扫描到的地方，因为他会覆盖掉所有策略，如果有多个策略被扫描到了，并且覆盖的策略为spring容器最后注册的策略。可以认为是随机的
+>2. 如果由于项目结构什么的必须要放到这里面，那么可以想办法让容器不注册它，比如加个注解，把有注解设置为@ComponentScan的filter
+
+```java
+@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = ExcludeFromComponentScan.class)})
+```

@@ -37,7 +37,7 @@
             <version>9.1-901-1.jdbc4</version>
         </dependency>
     </dependencies>
-    <build>
+    <!--<build>
         <plugins>
             <plugin>
                 <groupId>com.spotify</groupId>
@@ -55,6 +55,6 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 
 </project>

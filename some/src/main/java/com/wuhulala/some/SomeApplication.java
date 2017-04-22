@@ -25,6 +25,7 @@ public class SomeApplication {
 
     @RequestMapping(value = "/getsome")
     public String getSome(){
+        System.out.println("--------------who at me------------");
         return message;
     }
 
