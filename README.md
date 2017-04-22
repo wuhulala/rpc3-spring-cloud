@@ -80,3 +80,23 @@ public class SomeApplication {
 ```java
 @ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = ExcludeFromComponentScan.class)})
 ```
+
+3. ribbon 不与eureka联用 配置的方式 比较懒 官方文档
+
+如果当前没有依赖eureka 就是没有添加eureka的包
+
+手动设置person的访问地址
+```yaml
+person:
+  ribbon:
+    listOfServers: MSI.hs.handsome.com.cn:person:8080 , MSI.hs.handsome.com.cn:person:8081 , MSI.hs.handsome.com.cn:person:8082
+```
+
+如果我们添加了eureka的包,还需要第二步配置显式的配置
+
+```yaml
+ribbon:
+  eureka:
+   enabled: false
+```
+
