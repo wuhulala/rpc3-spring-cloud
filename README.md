@@ -42,7 +42,22 @@ public class SomeApplication {
 {"name":"some","profiles":["my"],"label":null,"version":null,"state":null,"propertySources":[{"name":"classpath:/config/some.yml","source":{"my.message":"wo shi xueaohui"}}]}
 ```
 
+
+
 #### 3. feign坑
 
 1. 不支持@GetMapping
 2. @PathVariable 需要设置value
+
+
+#### 4. ribbon
+>客户端负载均衡组件
+
+1. 客户端
+```java
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+```
