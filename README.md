@@ -41,3 +41,8 @@ public class SomeApplication {
 ```json
 {"name":"some","profiles":["my"],"label":null,"version":null,"state":null,"propertySources":[{"name":"classpath:/config/some.yml","source":{"my.message":"wo shi xueaohui"}}]}
 ```
+
+#### 3. feign坑
+
+1. 不支持@GetMapping
+2. @PathVariable 需要设置value
