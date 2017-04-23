@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/person")
 public class PersonController {
-    public static final Logger logger = LoggerFactory.getLogger(PersonController.class);
+    private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
     private PersonRepository personRepository;
 
     @Autowired
@@ -22,7 +23,7 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<Person> savePerson(@RequestBody String personName) {
         logger.info("save[" + personName + "]");
         Person p = new Person(personName);
@@ -37,5 +38,10 @@ public class PersonController {
         return personRepository.findOne(id);
     }
 
+    @GetMapping(value = "/person")
+    public Person getPerson(@RequestBody Person person) {
+        logger.debug("客户端请求[" + person + "]");
+        return personRepository.findOne(person.getId());
+    }
 
 }

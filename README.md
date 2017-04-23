@@ -100,3 +100,23 @@ ribbon:
    enabled: false
 ```
 
+#### 5. feign
+
+(1) 三个坑
+
+```java
+//1.必须使用@RequestMapping
+    @RequestMapping(method = RequestMethod.POST, value = "/person/save")
+    List<Person> save(@RequestBody String name);
+
+    //2. @PathVariable 必须设置value
+    @RequestMapping(method = RequestMethod.GET, value = "/person/{id}")
+    Person getById(@PathVariable("id") Long id);
+
+    //3.复杂对象必须使用post 类型的请求 因为这个请求也会被转化为post请求
+    //大白话 就是 下面这种请求 按说是GET类型的 但是在feign真实的请求时 会是post请求
+    //异常：{"timestamp":1492924045147,"status":405,"error":"Method Not Allowed","exception":"org.springframework.web.HttpRequestMethodNotSupportedException","message":"Request method 'POST' not supported","path":"/person/person"}
+
+    @RequestMapping(method = RequestMethod.GET, value = "/person/person")
+    Person getPerson(@RequestBody Person person);
+```

@@ -17,6 +17,7 @@
         <module>monitor</module>
         <module>consumer</module>
         <module>consumerribbon</module>
+        <module>consumer-feign</module>
     </modules>
 
 
