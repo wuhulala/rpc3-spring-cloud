@@ -16,7 +16,7 @@
         <module>some</module>
         <module>monitor</module>
         <module>consumer</module>
-        <module>consumerribbon</module>
+        <module>consumer-ribbon</module>
         <module>consumer-feign</module>
     </modules>
 
