@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: REGISTRY
+
+server:
+  port: 1002
+
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    fetchRegistry: true
+    serviceUrl:
+        defaultZone: http://peer1:1001/eureka/
