@@ -12,7 +12,7 @@ eureka:
     non-secure-port: ${server.port:8080}
   client:
     service-url:
-      defaultZone: http://${eureka.host:localhost}:${eureka.port:1003}/eureka/
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
 
 logging:
   level:

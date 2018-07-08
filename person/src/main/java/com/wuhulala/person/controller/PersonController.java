@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/person")
@@ -35,13 +36,15 @@ public class PersonController {
     @GetMapping(value = "/{id}")
     public Person getPerson(@PathVariable("id") Long id) {
         logger.debug("客户端请求id=[" + id + "]");
-        return personRepository.findOne(id);
+        Optional<Person> result =  personRepository.findById(id);
+        return result.orElseGet(Person::new);
     }
 
     @GetMapping(value = "/person")
     public Person getPerson(@RequestBody Person person) {
         logger.debug("客户端请求[" + person + "]");
-        return personRepository.findOne(person.getId());
+        Optional<Person> result =  personRepository.findById(person.getId());
+        return result.orElseGet(Person::new);
     }
 
 }

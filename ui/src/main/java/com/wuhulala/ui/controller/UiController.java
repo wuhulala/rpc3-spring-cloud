@@ -21,6 +21,7 @@ public class UiController {
 
 	@RequestMapping("/dispatch")
 	public List<Person> sendMessage(@RequestBody String personName) {
+		System.out.println(personName);
 		return personHystrixService.save(personName);
 	}
 	
