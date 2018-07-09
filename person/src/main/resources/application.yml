@@ -6,4 +6,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:mem:db2
+    username: sa
+    password:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 10
+
+
+
+## datasource
+
 
