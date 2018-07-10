@@ -15,10 +15,14 @@ spring:
     hikari:
       maximum-pool-size: 10
     name: hikari
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
 logging:
-  level: debug
-
-
+  level:
+    root: debug
 
 
 ## datasource

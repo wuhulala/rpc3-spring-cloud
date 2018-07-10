@@ -18,6 +18,7 @@
         <module>consumer</module>
         <module>consumer-ribbon</module>
         <module>consumer-feign</module>
+        <module>zipkin-server</module>
     </modules>
 
 
