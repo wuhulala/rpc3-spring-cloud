@@ -3,7 +3,7 @@ spring:
     name: person
   cloud:
     config:
-      enabled: true
+      enabled: false
       discovery:
         enabled: true
         service-id: CONFIG #1

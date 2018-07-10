@@ -8,13 +8,16 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author wuhulala
+ */
 @Service
 public class PersonHystrixService {
 
 	@Autowired
-	PersonService personService; 
+	private PersonService personService;
 
-	@HystrixCommand(fallbackMethod = "fallbackSave") //1
+	@HystrixCommand(fallbackMethod = "fallbackSave")
 	public List<Person> save(String name) {
 		return personService.save(name);
 	}

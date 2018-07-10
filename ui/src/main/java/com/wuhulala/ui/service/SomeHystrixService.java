@@ -10,9 +10,9 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 public class SomeHystrixService {
 
 	@Autowired
-	RestTemplate restTemplate; //1
+	RestTemplate restTemplate;
 
-	@HystrixCommand(fallbackMethod = "fallbackSome") //2
+	@HystrixCommand(fallbackMethod = "fallbackSome")
 	public String getSome() {
 		return restTemplate.getForObject("http://localhost:8083/getsome", String.class);
 	}

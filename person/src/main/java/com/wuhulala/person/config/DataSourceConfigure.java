@@ -1,6 +1,8 @@
 package com.wuhulala.person.config;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -31,5 +33,13 @@ public class DataSourceConfigure {
         dataSource.setPassword(properties.getPassword());
         dataSource.setDriverClassName(properties.getDriverClassName());
         return dataSource;
+    }
+
+    @Bean
+    @ConditionalOnBean(DataSource.class)
+    @ConditionalOnProperty("xxx")
+    public String hello(){
+        System.out.println(">>>>>>>>>>>>>>>> init..... Hello world");
+        return "Hello World";
     }
 }

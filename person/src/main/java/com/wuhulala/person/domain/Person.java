@@ -1,42 +1,25 @@
 package com.wuhulala.person.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@NoArgsConstructor
 public class Person {
 	@Id
 	@GeneratedValue
+	@Getter @Setter
 	private Long id;
-	
-	private String name;
-	
-	
-	
 
-	public Person() {
-		super();
-	}
+	@Getter @Setter
+	private String name;
 
 	public Person(String name) {
-		super();
-		this.name = name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
 		this.name = name;
 	}
 

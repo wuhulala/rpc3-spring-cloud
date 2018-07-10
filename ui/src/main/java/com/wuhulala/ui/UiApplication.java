@@ -9,9 +9,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients //1
-@EnableCircuitBreaker //2
-@EnableZuulProxy //3
+@EnableFeignClients
+@EnableCircuitBreaker
+@EnableZuulProxy
 public class UiApplication {
 	public static void main(String[] args) {
         SpringApplication.run(UiApplication.class, args);

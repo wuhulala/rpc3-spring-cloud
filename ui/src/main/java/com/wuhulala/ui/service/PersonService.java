@@ -12,6 +12,7 @@ import java.util.List;
 
 @FeignClient("person")
 public interface PersonService {
+
     @RequestMapping(method = RequestMethod.POST, value = "/person/save",
             produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
