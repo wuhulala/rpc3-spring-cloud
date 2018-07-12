@@ -1,6 +1,9 @@
 server:
   port: 9411
-
 zipkin:
-  ui:
-    basepath: /zipkin
+  collector:
+    kafka:
+      group-id: server1
+      topic: zipkin
+      streams: 4
+      bootstrap-servers: localhost:9092
