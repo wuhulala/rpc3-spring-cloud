@@ -2,8 +2,10 @@ spring:
     cloud:
         config:
             server:
-                native:
-                    search-locations: classpath:/config
+                git:
+                  uri: https://github.com/wuhulala/rpc3-spring-cloud
+                  search-paths: conf-repo
+                  basedir: D:/spring-cloud/config/git
 
 server:
     port: 8888
