@@ -21,14 +21,39 @@ var CURDService = function (modelName) {
     this.modelName = modelName;
     this.save = saveOne;
 
+
     //////////////////////////////////////
 
     function saveOne(item) {
-        console.log(this.modelName);
+        $http.post('/dispatch', item).success(function (data) {
+            $scope.people = data;
+            $scope.errorMessage = "";
+        }).error(function () {
+            $scope.errorMessage = "错误";
+        });        console.log(this.modelName);
         console.log(item);
     }
 
 };
+
+uiApp.service('crudService', function ($http) {
+    //this.modelName = modelName;
+    this.save = saveOne;
+
+
+    //////////////////////////////////////
+
+    function saveOne(item) {
+        $http.post('/dispatch', item).success(function (data) {
+            $scope.people = data;
+            $scope.errorMessage = "";
+        }).error(function () {
+            $scope.errorMessage = "错误";
+        });        console.log(this.modelName);
+        console.log(item);
+    }
+
+})
 
 uiApp.controller("PersonController", function ($scope, $http, PersonService) {
 
@@ -38,23 +63,32 @@ uiApp.controller("PersonController", function ($scope, $http, PersonService) {
     console.log("===============init person service asd ==============");
     console.log(PersonService);
     console.log("===============init person service ==============");
+//    PersonService.save(personName);
+
     $scope.getMessageResponse = function (personName) {
+        console.log(PersonService.save)
         PersonService.save(personName);
-        $http.post('/dispatch', personName).success(function (data) {
-            $scope.people = data;
-            $scope.errorMessage = "";
-        }).error(function () {
-            $scope.errorMessage = "错误";
-        });
+        // $http.post('/dispatch', personName).success(function (data) {
+        //     $scope.people = data;
+        //     $scope.errorMessage = "";
+        // }).error(function () {
+        //     $scope.errorMessage = "错误";
+        // });
     }
 
 });
 
-var personService = function () {};
-personService.prototype = new CURDService("person");
+// var personService = function ($http) {
+//     console.log("----personService 初始化------")
+//     personService.prototype = new CURDService("person");
+//     personService.prototype.$http = $http;
+// };
+// personService.$inject = ['$http'];
 
-uiApp.service("PersonService", personService);
-
+uiApp.service("PersonService", function (crudService) {
+    angular.extend(this, crudService);
+    this.modelName = 'person';
+});
 uiApp.controller("SomeController", function ($scope, $http) {
     $scope.str = "";
     $scope.errorMessage = "";
