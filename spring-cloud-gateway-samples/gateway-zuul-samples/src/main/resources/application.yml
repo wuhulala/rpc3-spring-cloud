@@ -1,0 +1,6 @@
+server:
+  port: 9001
+zuul:
+  routes:
+    ui: /api/**
+    person: /persons/**

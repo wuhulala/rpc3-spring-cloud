@@ -31,6 +31,7 @@
         <module>framework-web</module>
         <module>framework-cache</module>
         <module>framework-kernel</module>
+        <module>spring-cloud-gateway-samples</module>
     </modules>
 
 
@@ -60,7 +61,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.RELEASE</version>
+                <version>Finchley.SR2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

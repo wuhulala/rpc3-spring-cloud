@@ -26,12 +26,13 @@ var CURDService = function (modelName) {
 
     function saveOne(item) {
         $http.post('/dispatch', item).success(function (data) {
+            console.log(data);
             $scope.people = data;
             $scope.errorMessage = "";
         }).error(function () {
             $scope.errorMessage = "错误";
-        });        console.log(this.modelName);
-        console.log(item);
+        });
+        console.log(this.modelName);
     }
 
 };
@@ -44,13 +45,7 @@ uiApp.service('crudService', function ($http) {
     //////////////////////////////////////
 
     function saveOne(item) {
-        $http.post('/dispatch', item).success(function (data) {
-            $scope.people = data;
-            $scope.errorMessage = "";
-        }).error(function () {
-            $scope.errorMessage = "错误";
-        });        console.log(this.modelName);
-        console.log(item);
+        return $http.post('/dispatch', item)
     }
 
 })
@@ -67,7 +62,12 @@ uiApp.controller("PersonController", function ($scope, $http, PersonService) {
 
     $scope.getMessageResponse = function (personName) {
         console.log(PersonService.save)
-        PersonService.save(personName);
+        PersonService.save(personName).success(function (data) {
+            $scope.people = data;
+            $scope.errorMessage = "";
+        }).error(function () {
+            $scope.errorMessage = "错误";
+        });
         // $http.post('/dispatch', personName).success(function (data) {
         //     $scope.people = data;
         //     $scope.errorMessage = "";
