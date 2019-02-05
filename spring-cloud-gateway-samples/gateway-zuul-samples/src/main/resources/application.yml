@@ -4,3 +4,9 @@ zuul:
   routes:
     ui: /api/**
     person: /persons/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
