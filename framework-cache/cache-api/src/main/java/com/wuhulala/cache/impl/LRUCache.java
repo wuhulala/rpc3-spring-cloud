@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * LRU 实现(非线程安全)
+ * LRU(Least Recently Used/最近时间访问) 实现(非线程安全)
  *
  * <p>通过LinkedHashMap的重写{@link LinkedHashMap#removeEldestEntry(Map.Entry)}方法。</p>
  * <p>LinkedHashMap 已经实现了LRU算法</p>

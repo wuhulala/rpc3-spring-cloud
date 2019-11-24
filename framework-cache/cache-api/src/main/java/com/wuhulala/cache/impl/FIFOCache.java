@@ -9,6 +9,8 @@ import java.util.LinkedList;
 import java.util.Map;
 
 /**
+ * FIFO(先进先出)
+ *
  * @author wuhulala<br>
  * @date 2019/11/24<br>
  * @since v1.0<br>
