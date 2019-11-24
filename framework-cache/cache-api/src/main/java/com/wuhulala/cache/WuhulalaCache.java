@@ -15,4 +15,6 @@ public interface WuhulalaCache<K, V> {
 
     void clear();
 
+    default void printInfo(){};
+
 }
