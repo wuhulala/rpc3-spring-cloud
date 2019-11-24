@@ -2,20 +2,22 @@ package com.wuhulala.cache.impl;
 
 import com.wuhulala.cache.ValueHolder;
 import com.wuhulala.cache.WuhulalaCache;
-import java.lang.ref.WeakReference;
+import java.lang.ref.SoftReference;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 弱引用实现(只要GC就回收)
+ * 软引用缓存，
  *
- * 强 => 软(SoftReference) => 弱(WekReference) =>  虚(PhantomReference)
+ * <p>内存空间足够就不回收，不够就回收</p>
+ *
+ * <p>强 => 软(SoftReference) => 弱(WekReference) => 虚(PhantomReference)</p>
  *
  * @author wuhulala<br>
  * @date 2019/11/21<br>
  * @since v1.0<br>
  */
-public class WeakValueCache<K, V> implements WuhulalaCache<K, V> {
+public class SoftValueCache<K, V> implements WuhulalaCache<K, V> {
 
     private Map<K, ValueHolder<V>> map = new ConcurrentHashMap<>();
 
@@ -26,7 +28,7 @@ public class WeakValueCache<K, V> implements WuhulalaCache<K, V> {
 
     @Override
     public boolean put(K key, V value) {
-        map.put(key, new WeakValueHolder<V>(value));
+        map.put(key, new SoftValueHolder<V>(value));
         return true;
     }
 
@@ -40,12 +42,12 @@ public class WeakValueCache<K, V> implements WuhulalaCache<K, V> {
         map.clear();
     }
 
-    static class WeakValueHolder<V> implements ValueHolder<V> {
+    static class SoftValueHolder<V> implements ValueHolder<V> {
 
-        private WeakReference<V> v;
+        private SoftReference<V> v;
 
-        public WeakValueHolder(V v) {
-            this.v = new WeakReference<>(v);
+        public SoftValueHolder(V v) {
+            this.v = new SoftReference<>(v);
         }
 
         public V value() {
