@@ -11,6 +11,7 @@ import java.util.Map;
  * LFU （最不常用算法、Least Frequently Used） Un-ThreadSafe
  *
  * <p>找出访问频次最少的对象，替换掉</p>
+ * <p>通过记录key的访问次数，和每个访问次数最小的key集合</p>
  *
  * @author wuhulala<br>
  * @date 2019/11/24<br>
