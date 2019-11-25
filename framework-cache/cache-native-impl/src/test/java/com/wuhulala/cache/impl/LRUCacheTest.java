@@ -4,8 +4,6 @@ import com.wuhulala.cache.WuhulalaCache;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author wuhulala<br>
  * @date 2019/11/24<br>
