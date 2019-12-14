@@ -3,21 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>spring-cloud-apps</artifactId>
+        <artifactId>framework-cache</artifactId>
         <groupId>com.wuhulala</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>framework-cache</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>cache-api</module>
-        <module>cache-native-impl</module>
-        <module>cache-ehcache</module>
-        <module>cache-redis-impl</module>
-        <module>cache-composite-impl</module>
-    </modules>
+    <artifactId>cache-composite-impl</artifactId>
+    <description>混合实现！</description>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.wuhulala</groupId>
+            <artifactId>cache-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

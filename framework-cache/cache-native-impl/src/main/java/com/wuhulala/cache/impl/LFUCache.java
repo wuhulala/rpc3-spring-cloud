@@ -63,7 +63,7 @@ public class LFUCache<K, V> implements WuhulalaCache<K, V> {
     }
 
     @Override
-    public boolean put(K key, V value) {
+    public void put(K key, V value) {
         removeLeastIfFull();
         addKeyVisited(key);
         System.out.println("--------------addKeyVisited---------------------");
