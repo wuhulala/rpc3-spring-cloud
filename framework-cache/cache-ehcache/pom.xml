@@ -12,6 +12,10 @@
     <artifactId>cache-ehcache</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId></groupId>
+            <artifactId></artifactId>
+        </dependency>
 
     </dependencies>
 

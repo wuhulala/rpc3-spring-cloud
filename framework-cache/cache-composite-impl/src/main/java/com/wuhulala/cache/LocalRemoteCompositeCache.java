@@ -52,10 +52,10 @@ public class LocalRemoteCompositeCache<K, V> implements WuhulalaCache<K, V> {
         if (value.value() != null) {
             return value;
         }
-        Future remoteValue = threadPoolExecutor.submit(() -> remoteCache.get(key));
+        Future<ValueHolder<V>> remoteValue = threadPoolExecutor.submit(() -> remoteCache.get(key));
 
         try {
-            value = (ValueHolder<V>) remoteValue.get(3000, TimeUnit.MILLISECONDS);
+            value = remoteValue.get(3000, TimeUnit.MILLISECONDS);
             localCache.put(key, value.value());
         } catch (Exception e) {
             throw new CacheException(e);
