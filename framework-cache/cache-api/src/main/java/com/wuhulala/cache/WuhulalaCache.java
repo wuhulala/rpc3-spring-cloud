@@ -7,9 +7,16 @@ package com.wuhulala.cache;
  */
 public interface WuhulalaCache<K, V> {
 
+    public static final String NULL_OBJECT = new String();
+
+    /**
+     * 缓存初始化过程
+     */
+    default void init(){};
+
     ValueHolder<V> get(K key);
 
-    boolean put(K key, V value);
+    void put(K key, V value);
 
     ValueHolder<V> remove(K key);
 

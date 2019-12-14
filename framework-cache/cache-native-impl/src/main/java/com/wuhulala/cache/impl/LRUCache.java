@@ -43,7 +43,7 @@ public class LRUCache<K, V> implements WuhulalaCache<K, V> {
     }
 
     @Override
-    public boolean put(K key, V value) {
+    public void put(K key, V value) {
         internalCache.put(key, new DefaultValueHolder<>(value));
         return true;
     }

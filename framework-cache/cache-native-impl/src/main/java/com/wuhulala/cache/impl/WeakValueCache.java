@@ -25,7 +25,7 @@ public class WeakValueCache<K, V> implements WuhulalaCache<K, V> {
     }
 
     @Override
-    public boolean put(K key, V value) {
+    public void put(K key, V value) {
         map.put(key, new WeakValueHolder<V>(value));
         return true;
     }
